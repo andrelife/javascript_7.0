@@ -32,4 +32,3 @@ let question2 = prompt( 'Во сколько обойдется ?');
 
 console.log(appData);
 console.log(money/30);
-
