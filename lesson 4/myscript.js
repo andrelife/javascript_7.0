@@ -80,7 +80,6 @@ start();
                 i--;
             }
         }
-
     }
 };
 for(let key in appData){
