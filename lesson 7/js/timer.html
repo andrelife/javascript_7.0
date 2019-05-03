@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #myblock{
+            font: bold 25pt sans;
+            color:brown;
+            width: 160px;
+            height: 40px;
+            border: solid 2px red;
+            border-radius: 20px;
+            top: 15px;
+            right: 15px;
+            padding: 55px;  
+        }
+    </style>
+    <script type="text/javascript">
+        function setMyTime() {
+            let time = new Date();
+            document.getElementById('myblock').innerHTML=time.toLocaleTimeString()
+        };
+    </script>    
+</head>
+<body onload="setInterval(setMyTime, 1000)">
+    <div id="myblock">таймер</div>
+    
+</body>
+</html>
