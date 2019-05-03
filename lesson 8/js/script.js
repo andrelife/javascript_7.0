@@ -42,7 +42,6 @@ window.addEventListener('DOMContentLoaded', function(){
             hours = Math.floor((t/(1000*60*60)));
             //hours = Math.floor((t/1000/60/60) % 24),
             //seconds = Math.floor((t/(1000*60*60*24)));
-          
             return {
                 'total' : t,
                 'hours' : hours,
@@ -57,22 +56,21 @@ window.addEventListener('DOMContentLoaded', function(){
             minutes = document.querySelector('.minutes'),
             seconds = document.querySelector('.seconds'),
             timeInterval = setInterval(updateClock, 1000);
-            if(t.total <= 0) {
-                clearInterval(timeInterval);
-            }
-            
         function updateClock(){
             let t = getTimeRemaining(endtime);
                 hours.textContent = t.hours;
                 minutes.textContent = t.minutes;
-                seconds.textContent = t.seconds; 
+                seconds.textContent = t.seconds;
+
+                if(t.total <= 0) {
+                    clearInterval(timeInterval);
+                    hours.textContent = '00';
+                    minutes.textContent = '00';
+                    seconds.textContent = '00';
+                }
+                
         }
-        if(endtime < new Date()){
-           //timer = 
-           hours.textContent = '00',
-            minutes.textContent = '00',
-            seconds.textContent = '00';
-        }
+        
     }
     setClock('timer', deadline);
 });
