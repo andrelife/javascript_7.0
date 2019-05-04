@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     });
     // Таймер
-    let deadline = '2018-05-04';
+    let deadline = '2019-05-05';
     function getTimeRemaining(endtime) {
         let t =Date.parse(endtime) - Date.parse(new Date()),
             seconds = Math.floor((t/1000) % 60),
@@ -44,9 +44,9 @@ window.addEventListener('DOMContentLoaded', function(){
             //seconds = Math.floor((t/(1000*60*60*24)));
             return {
                 'total' : t,
-                'hours' : hours,
-                'minutes' : minutes,
-                'seconds' : seconds
+                'hours' : ('0' + hours).slice(-2),
+                'minutes' : ('0' + minutes).slice(-2),
+                'seconds' : ('0' + seconds).slice(-2)
             };
             
     }
