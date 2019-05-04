@@ -1,2 +1,6 @@
-let a = [].push(1,2).unshift(3).join()
-console.log(a);
+let age = document.getElementById('age');
+ 
+function showUser(surname, name) {
+         console.log("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+}
+ console.log(showUser.apply(age, ['Pakselev', 'Andrei']));

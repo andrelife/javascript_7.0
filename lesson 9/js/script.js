@@ -79,14 +79,14 @@ window.addEventListener('DOMContentLoaded', function(){
 let more = document.querySelector('.more'),
     overlay = document.querySelector('.overlay'),
     close = document.querySelector('.popup-close'),
-    descbtn = document.querySelectorAll('.description-btn');
-descbtn.addEventListener('click', function(){
-    for(let i = 0; i < tabContent.length; i++) {
+    descriptionBtn = document.querySelectorAll('.description-btn');
+for(let i = 0; i < descriptionBtn.length; i++) {   
+    descriptionBtn[i].addEventListener('click', function(){
     overlay.style.display = 'block';
     this.classList.add('more-splash');
     document.body.style.overflow = 'hidden';
-    }
-});
+    });
+}
 more.addEventListener('click', function(){
     overlay.style.display = 'block';
     this.classList.add('more-splash');
