@@ -81,7 +81,7 @@ let more = document.querySelector('.more'),
     close = document.querySelector('.popup-close'),
     descriptionBtn = document.querySelectorAll('.description-btn'),
     content = document.querySelector('.content');
-function showDescriptionBtn(){
+
     content.addEventListener('click', function(event){
         if(event.target && event.target.matches('.description-btn')) {
             overlay.style.display = 'block';
@@ -89,19 +89,23 @@ function showDescriptionBtn(){
             document.body.style.overflow = 'hidden';
         }
     });
-}
-showDescriptionBtn();
-function moreCloseBtn(){
-    more.addEventListener('click', function(){
-        overlay.style.display = 'block';
-        this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden';
-    });
-    close.addEventListener('click', function(){
-        overlay.style.display = 'none';
-        more.classList.add('more-splash');
-        document.body.style.overflow = '';
-    });
-}
-moreCloseBtn();
+
+// for(let i = 0; i < descriptionBtn.length; i++) {   
+//     descriptionBtn[i].addEventListener('click', function(){
+//     overlay.style.display = 'block';
+//     this.classList.add('more-splash');
+//     document.body.style.overflow = 'hidden';
+//     });
+// }
+more.addEventListener('click', function(){
+    overlay.style.display = 'block';
+    this.classList.add('more-splash');
+    document.body.style.overflow = 'hidden';
+});
+close.addEventListener('click', function(){
+    overlay.style.display = 'none';
+    more.classList.add('more-splash');
+    document.body.style.overflow = '';
+});
+
 });
