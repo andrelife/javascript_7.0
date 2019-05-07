@@ -8,10 +8,10 @@ class Options {
     }
     createDiv() {
         let div = document.createElement('div');
+        div.innerText = 'я новый блок';
         div.style.cssText = 'color: red; font-size: 20px;';
-        return div;
     }
     
 }
 const page = new Options(25,25,'red',16,'left');
-console.log(page.createDiv());
+page.createDiv();
