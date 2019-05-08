@@ -104,7 +104,6 @@ function moreCloseBtn(){
     });
 }
 moreCloseBtn();
-});
 
 // Form
 let message = {
@@ -124,7 +123,7 @@ form.addEventListener('submit', function(event) {
 
     let request = new XMLHttpRequest();
         request.open('POST', 'server.php');
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
 
     let formData = new FormData(form);
         request.send(formData);
@@ -138,4 +137,8 @@ form.addEventListener('submit', function(event) {
                 statusMessage.innerHTML = message.failure;
             }
         });
+        for(let i = 0; i < input.length; i++){
+            inputs[i].value = '';
+        }
+    });
 });
