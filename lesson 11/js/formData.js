@@ -123,17 +123,10 @@ form.addEventListener('submit', function(event) {
 
     let request = new XMLHttpRequest();
         request.open('POST', 'server.php');
-        request.setRequestHeader('Content-type', 'application/json charset=utf-8');
+        request.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
 
     let formData = new FormData(form);
-
-        let obj = {};
-        formData.forEach(function(value, key) {
-            obj[key] = value;
-        });
-        let json = JSON.stringify(obj);
-
-        request.send(json);
+        request.send(formData);
 
         request.addEventListener('readystatechange', function(){
             if(request.readyState < 4) {
@@ -144,7 +137,7 @@ form.addEventListener('submit', function(event) {
                 statusMessage.innerHTML = message.failure;
             }
         });
-        for (let i = 0; i < input.length; i++){
+        for(let i = 0; i < input.length; i++){
             input[i].value = '';
         }
     });
