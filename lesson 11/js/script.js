@@ -144,6 +144,15 @@ form.addEventListener('submit', function(event) {
                 statusMessage.innerHTML = message.failure;
             }
         });
+        
+            let x = form.getElementsByTagName('input').value;
+            if (isNaN(x) || x < 1 || x > 13) {
+              text = "Input not valid";
+            } else {
+              text = "Input OK";
+            }
+            document.getElementsByClassName('popup-form__input').innerHTML = text;
+          
         for (let i = 0; i < input.length; i++){
             input[i].value = '';
         }
