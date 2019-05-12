@@ -112,7 +112,7 @@ let message = {
     failure: 'Что-то пошло не так...' 
 };
 let form = document.querySelector('.main-form'),
-    input = form.getElementsByTagName('input'),
+    input = form.getElementsByTagName('input')[0],
     statusMessage = document.createElement('div'),
     formTelEmail = document.getElementById('form'),
     inputs = formTelEmail.getElementsByTagName('input'),
@@ -194,12 +194,12 @@ form.addEventListener('submit', function(event) {
                 }
             }
         };
-        // input.onkeypress = function(event){
-        //     if (event.keyCode != 43) {
-        //         if(event.keyCode < 48 || event.keyCode > 57){
-        //     event.preventDefault();
-        //         }
-        //     }
-        // };
+        input.onkeypress = function(event){
+            if (event.keyCode != 43) {
+                if(event.keyCode < 48 || event.keyCode > 57){
+            event.preventDefault();
+                }
+            }
+        };
 
 });
