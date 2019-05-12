@@ -114,7 +114,13 @@ let message = {
 let form = document.querySelector('.main-form'),
     input = form.getElementsByTagName('input'),
     statusMessage = document.createElement('div'),
-    formTelEmail = document.querySelector('#form');
+    formTelEmail = document.getElementById('form'),
+    inputs = formTelEmail.getElementsByTagName('input'),
+    input1 = formTelEmail.getElementsByTagName('input')[0],
+    input2 = formTelEmail.getElementsByTagName('input')[1];
+    
+    input1.name = 'email';
+	input2.name = 'phone';
 
     statusMessage.classList.add('status');
 
@@ -152,13 +158,13 @@ form.addEventListener('submit', function(event) {
 
     formTelEmail.addEventListener('submit', function(event) {
         event.preventDefault();
-        form.appendChild(statusMessage);
+        formTelEmail.appendChild(statusMessage);
     
         let request = new XMLHttpRequest();
             request.open('POST', 'server.php');
             request.setRequestHeader('Content-type', 'application/json charset=utf-8');
     
-        let formData = new FormData(form);
+        let formData = new FormData(formTelEmail);
     
             let obj = {};
             formData.forEach(function(value, key) {
@@ -177,9 +183,23 @@ form.addEventListener('submit', function(event) {
                     statusMessage.innerHTML = message.failure;
                 }
             });
-            for (let i = 0; i < input.length; i++){
-                input[i].value = '';
+            for (let i = 0; i < inputs.length; i++){
+                inputs[i].value = '';
             }
         });
+        input2.onkeypress = function(event){
+            if (event.keyCode != 43) {
+                if(event.keyCode < 48 || event.keyCode > 57){
+            event.preventDefault();
+                }
+            }
+        };
+        // input.onkeypress = function(event){
+        //     if (event.keyCode != 43) {
+        //         if(event.keyCode < 48 || event.keyCode > 57){
+        //     event.preventDefault();
+        //         }
+        //     }
+        // };
 
 });
