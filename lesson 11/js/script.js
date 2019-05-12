@@ -113,7 +113,8 @@ let message = {
 };
 let form = document.querySelector('.main-form'),
     input = form.getElementsByTagName('input'),
-    statusMessage = document.createElement('div');
+    statusMessage = document.createElement('div'),
+    formTelEmail = document.querySelector('#form');
 
     statusMessage.classList.add('status');
 
@@ -144,17 +145,41 @@ form.addEventListener('submit', function(event) {
                 statusMessage.innerHTML = message.failure;
             }
         });
-        
-            let x = form.getElementsByTagName('input').value;
-            if (isNaN(x) || x < 1 || x > 13) {
-              text = "Input not valid";
-            } else {
-              text = "Input OK";
-            }
-            document.getElementsByClassName('popup-form__input').innerHTML = text;
-          
         for (let i = 0; i < input.length; i++){
             input[i].value = '';
         }
     });
+
+    formTelEmail.addEventListener('submit', function(event) {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+    
+        let request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            request.setRequestHeader('Content-type', 'application/json charset=utf-8');
+    
+        let formData = new FormData(form);
+    
+            let obj = {};
+            formData.forEach(function(value, key) {
+                obj[key] = value;
+            });
+            let json = JSON.stringify(obj);
+    
+            request.send(json);
+    
+            request.addEventListener('readystatechange', function(){
+                if(request.readyState < 4) {
+                    statusMessage.innerHTML = message.loading; 
+                }else if(request.readyState === 4 && request.status == 200) {
+                    statusMessage.innerHTML = message.success;
+                }else{
+                    statusMessage.innerHTML = message.failure;
+                }
+            });
+            for (let i = 0; i < input.length; i++){
+                input[i].value = '';
+            }
+        });
+
 });
