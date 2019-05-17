@@ -234,11 +234,10 @@ let persons = document.querySelectorAll('.counter-block-input')[0],
     restDays = document.querySelectorAll('.counter-block-input')[1],
     place = document.getElementById('select'),
     totalValue = document.getElementById('total'),
-    options = document.querySelectorAll('option'),
+    //options = document.querySelectorAll('option'),
     personsSum = 0,
     daysSum = 0,
     total = 0;
-    console.log(options);
 
     persons.onkeypress = function(event){
             if(event.keyCode < 48 || event.keyCode > 57){
@@ -258,7 +257,7 @@ let persons = document.querySelectorAll('.counter-block-input')[0],
         if(persons.value == 0  && restDays.value == '' || persons.value == ''){
             totalValue.innerHTML = 0;
         } else{
-            totalValue.innerHTML = total*options[selectedIndex].value;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
     });
     restDays.addEventListener('change', function(){
@@ -267,7 +266,7 @@ let persons = document.querySelectorAll('.counter-block-input')[0],
         if(restDays.value == 0 && persons.value == '' || restDays.value == ''){
             totalValue.innerHTML = 0;
         } else{
-            totalValue.innerHTML = total*options[selectedIndex].value;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
     });
     place.addEventListener('change', function(){
